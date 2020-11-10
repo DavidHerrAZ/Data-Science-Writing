@@ -33,6 +33,13 @@ def drop_nonoverlap_columns(df1, df2):
         dataframe.drop(drop_columns, axis=1, inplace=True)
 
 
+def print_column_types(dataframe_list):
+    for dataframe in dataframe_list:
+        print("\nDataframe Shape:{}".format(dataframe.shape))
+        for col in dataframe:
+            print("{}:{}".format(col, dataframe[col].dtypes))
+
+
 def clean_currency(x):
     """ If the value is a string, then remove currency symbol and delimiters
     otherwise, the value is numeric and can be converted
