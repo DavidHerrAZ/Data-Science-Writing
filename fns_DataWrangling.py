@@ -40,6 +40,21 @@ def print_column_types(dataframe_list):
             print("{}:{}".format(col, dataframe[col].dtypes))
 
 
+def cleanse_data_tf_to_boolean(dataframe_list):
+
+    for dataframe in dataframe_list:
+
+        column_list = []
+
+        for col in dataframe.columns:
+            if sum(dataframe[col].isin(['t', 'f'])) == len(dataframe[col]):
+                column_list.append(col)
+
+        for col in column_list:
+            dataframe.loc[(dataframe[col] == 't'), col] = True
+            dataframe.loc[(dataframe[col] == 'f'), col] = False
+
+
 def clean_currency(x):
     """ If the value is a string, then remove currency symbol and delimiters
     otherwise, the value is numeric and can be converted
