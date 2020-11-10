@@ -21,7 +21,7 @@ def tokenize(text):
     # tokenize text
     tokens = word_tokenize(text)
 
-    # lemmatize andremove stop words
+    # lemmatize and remove stop words
     tokens = [lemmatizer.lemmatize(word)
               for word in tokens if word not in stop_words]
 
